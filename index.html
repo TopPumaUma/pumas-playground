@@ -6,25 +6,24 @@
     <title>Puma's Playground</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Fullscreen canvas for interactive rain */
         body {
             margin: 0;
-            overflow: hidden; /* No scrollbars */
-            background: black; /* Unified black background */
-            color: white; /* Ensure text is visible against the black background */
+            overflow: hidden;
+            background: black; /* Unified background */
+            color: white;
         }
 
         canvas {
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1; /* Behind everything */
+            z-index: -1; /* Ensure it's behind all content */
         }
 
         header {
             position: relative;
             z-index: 1;
-            background: transparent; /* Make sure header blends with black */
+            background: transparent; /* Seamless integration */
         }
 
         main {
@@ -118,7 +117,7 @@
         canvas.height = window.innerHeight;
 
         const raindrops = [];
-        const mouse = { x: -100, y: -100 };
+        const mouse = { x: -100, y: -100 }; // Mouse starts off-screen
 
         // Generate Raindrops
         for (let i = 0; i < 150; i++) {
@@ -127,10 +126,11 @@
                 y: Math.random() * canvas.height,
                 radius: Math.random() * 2 + 1,
                 speed: Math.random() * 2 + 2,
-                colorStop: Math.random() // Randomize initial color gradient position
+                colorStop: Math.random() // Controls the green-to-blue gradient
             });
         }
 
+        // Mouse Tracking
         canvas.addEventListener('mousemove', (event) => {
             mouse.x = event.clientX;
             mouse.y = event.clientY;
@@ -140,31 +140,34 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             raindrops.forEach(drop => {
-                // Calculate gradient-based color
-                const color = `rgba(${Math.floor(0 + drop.colorStop * 255)}, ${Math.floor(255 - drop.colorStop * 255)}, ${Math.floor(255)}, 0.8)`;
+                // Calculate color from position
+                const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255);
+                const blueComponent = Math.floor((drop.y / canvas.height) * 255);
+                const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`;
 
                 // Distance from mouse
                 const dx = drop.x - mouse.x;
                 const dy = drop.y - mouse.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
+                // Push effect
                 if (distance < 100) {
                     const angle = Math.atan2(dy, dx);
                     drop.x += Math.cos(angle) * 3;
                     drop.y += Math.sin(angle) * 3;
                 }
 
-                // Move drop
+                // Move the drop
                 drop.y += drop.speed;
                 if (drop.y > canvas.height) {
                     drop.y = 0;
                     drop.x = Math.random() * canvas.width;
                 }
 
-                // Draw Raindrop
+                // Draw the drop
                 ctx.beginPath();
                 ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-                ctx.fillStyle = color; // Set the gradient-based color
+                ctx.fillStyle = color; // Gradient color
                 ctx.fill();
                 ctx.closePath();
             });
