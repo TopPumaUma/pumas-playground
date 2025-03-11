@@ -52,7 +52,20 @@
             </form>
         </section>
     </main>
-    <script src="scripts.js"></script>
+    <script>
+        function loadGameDetail(gameTitle, gameURL) {
+            const gamesGrid = document.getElementById("games-grid");
+            gamesGrid.innerHTML = `
+                <h3>${gameTitle}</h3>
+                <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+                <button onclick="reloadGames()">Back to Games</button>
+            `;
+        }
+
+        function reloadGames() {
+            location.reload(); // Reloads the page to show the games grid again
+        }
+    </script>
 </body>
 </html>
 
