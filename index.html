@@ -104,4 +104,44 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Game Viewer</title>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section: Main Game Display -->
+    <div class="main-game">
+      <h2 id="game-title">Game 1</h2>
+      <div id="game-display" class="game-box">
+        <!-- Placeholder for the current selected game -->
+        <p>Game 1 content or 16:9 game view goes here.</p>
+      </div>
+    </div>
+
+    <!-- Right Section: Other Games List -->
+    <div class="game-list">
+      <h3>Other Games</h3>
+      <div class="game-item" onclick="switchGame('Game 2', 'Content for Game 2')">
+        Game 2
+      </div>
+      <div class="game-item" onclick="switchGame('Game 3', 'Content for Game 3')">
+        Game 3
+      </div>
+      <div class="game-item" onclick="switchGame('Game 4', 'Content for Game 4')">
+        Game 4
+      </div>
+      <div class="game-item" onclick="switchGame('Game 5', 'Content for Game 5')">
+        Game 5
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
