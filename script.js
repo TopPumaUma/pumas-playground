@@ -11,6 +11,14 @@ gamesButton.addEventListener("click", () => {
   gamesGrid.classList.toggle("hidden");
 });
 
+function switchGame(title, content) {
+  // Update the title of the main game
+  document.getElementById("game-title").textContent = title;
+
+  // Update the content of the main game display
+  const gameDisplay = document.getElementById("game-display");
+  gameDisplay.innerHTML = `<p>${content}</p>`;
+}
 
 
 
