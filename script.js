@@ -40,7 +40,7 @@ function loadGameDetail(title, details) {
       <!-- Right Section: Other Games -->
       <div class="game-list">
         <h3>Other Games</h3>
-        <div class="game-item" onclick="loadGameDetail('Game 1', 'Details about Game 1')">Game 1</div>
+        <div class="game-item" onclick="loadGameDetail('Drive Mad', 'Drive Mad is a car game requiring you to avoid obstacles as you complete the level in the fun, colorful form!')">Game 1</div>
         <div class="game-item" onclick="loadGameDetail('Game 2', 'Details about Game 2')">Game 2</div>
         <div class="game-item" onclick="loadGameDetail('Game 3', 'Details about Game 3')">Game 3</div>
         <div class="game-item" onclick="loadGameDetail('Game 4', 'Details about Game 4')">Game 4</div>
