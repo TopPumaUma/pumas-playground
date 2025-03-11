@@ -49,3 +49,29 @@ function goToGame(title, description) {
 }
 
 
+function loadGameDetail(title, details) {
+  const container = document.getElementById("games-grid").parentElement;
+
+  // Replace the current grid with the detailed view layout
+  container.innerHTML = `
+    <div class="main-game">
+      <h2>${title}</h2>
+      <div class="game-box">
+        <p>${details}</p>
+        <p>This is the main game area (16:9 rectangle).</p>
+      </div>
+    </div>
+    <div class="game-list">
+      <h3>Other Games</h3>
+      <div class="game-item" onclick="loadGameDetail('Game 1', 'Details about Game 1')">
+        Game 1
+      </div>
+      <div class="game-item" onclick="loadGameDetail('Game 2', 'Details about Game 2')">
+        Game 2
+      </div>
+      <div class="game-item" onclick="loadGameDetail('Game 3', 'Details about Game 3')">
+        Game 3
+      </div>
+    </div>
+  `;
+}
