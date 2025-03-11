@@ -122,3 +122,14 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+#game-detail {
+    display: none; /* Hidden by default */
+    position: relative; /* Ensures it's part of the document flow */
+    max-height: 100vh; /* Limits the height to the viewport height */
+    overflow-y: auto; /* Enables scrolling when content overflows */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.9); /* Optional: Make the background darker for focus */
+    color: white; /* Keep text visible */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slight shadow for a pop effect */
+    border-radius: 10px; /* Optional: Rounded edges for aesthetics */
+}
