@@ -71,6 +71,23 @@ section {
 }
 
 /* Game detail view */
+#game-detail {
+    display: none; /* Hidden by default */
+    position: absolute; /* Overlay the entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Take up full viewport height */
+    overflow-y: auto; /* Enables scrolling when content overflows */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background for focus */
+    color: white;
+    padding: 20px;
+    z-index: 10; /* Ensures it appears on top of everything */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for effect */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+/* Game item list view */
 .container {
     display: flex;
     justify-content: space-between;
@@ -120,16 +137,4 @@ section {
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-#game-detail {
-    display: none; /* Hidden by default */
-    position: relative; /* Ensures it's part of the document flow */
-    max-height: 100vh; /* Limits the height to the viewport height */
-    overflow-y: auto; /* Enables scrolling when content overflows */
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.9); /* Optional: Make the background darker for focus */
-    color: white; /* Keep text visible */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Slight shadow for a pop effect */
-    border-radius: 10px; /* Optional: Rounded edges for aesthetics */
 }
