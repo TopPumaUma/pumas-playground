@@ -123,3 +123,9 @@ header {
     color: white;
 }
 
+
+nav ul li a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
