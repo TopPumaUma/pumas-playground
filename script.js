@@ -90,22 +90,4 @@ function loadGameDetail(title, gameUrl) {
   `;
 }
 
-function loadGameDetail(title, gameUrl) {
-  const container = document.body;
-  container.innerHTML = `
-    <div class="container">
-      <div class="main-game">
-        <h2>${title}</h2>
-        <div class="game-box">
-          <p>Sorry, this game cannot be embedded. Play it <a href="${gameUrl}" target="_blank">here</a>.</p>
-        </div>
-      </div>
-      <div class="game-list">
-        <h3>Other Games</h3>
-        <div class="game-item" onclick="loadGameDetail('Drive Mad', 'https://poki.com/en/g/drive-mad')">Drive Mad</div>
-        <div class="game-item" onclick="loadGameDetail('Game 2', 'game2.html')">Game 2</div>
-        <div class="game-item" onclick="loadGameDetail('Game 3', 'game3.html')">Game 3</div>
-      </div>
-    </div>
-  `;
-}
+
