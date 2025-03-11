@@ -83,3 +83,63 @@ button {
 }
 
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.main-game {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.main-game h2 {
+  text-align: center;
+}
+
+.game-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.game-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-list h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.game-item {
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.game-item:hover {
+  background-color: #e0f7fa;
+}
