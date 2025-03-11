@@ -12,6 +12,7 @@ header {
     background-color: #4CAF50;
     color: white;
     padding: 1em;
+    background: linear-gradient(45deg, #00ff88, #0055ff); /* Gradient update */
 }
 
 nav ul {
@@ -30,6 +31,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+    color: yellow;
     text-decoration: underline;
 }
 
@@ -52,18 +54,20 @@ section {
 
 /* Game cards styling */
 .game-card {
-    background-color: #f0f0f0;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
+    border: 2px solid white; /* White border */
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: white; /* White text for readability */
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
 }
 
 .game-card:hover {
-    transform: translateY(-5px);
-    background-color: #e0f7fa;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Game detail view */
@@ -116,16 +120,5 @@ section {
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header {
-    background: linear-gradient(45deg, #00ff88, #0055ff);
-    color: white;
-}
-
-
-nav ul li a:hover {
-    color: yellow;
-    text-decoration: underline;
 }
 
