@@ -76,7 +76,7 @@ function loadGameDetail(title, gameUrl) {
       <!-- Right Section: Other Games -->
       <div class="game-list">
         <h3>Other Games</h3>
-        <div class="game-item" onclick="loadGameDetail('Game 1', 'https://poki.com/en/g/drive-mad')">Game 1</div>
+        <div class="game-item" onclick="loadGameDetail('Drive Mad', 'https://poki.com/en/g/drive-mad')">Game 1</div>
         <div class="game-item" onclick="loadGameDetail('Game 2', 'game2.html')">Game 2</div>
         <div class="game-item" onclick="loadGameDetail('Game 3', 'game3.html')">Game 3</div>
         <div class="game-item" onclick="loadGameDetail('Game 4', 'game1.html')">Game 4</div>
