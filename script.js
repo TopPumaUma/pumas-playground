@@ -36,4 +36,28 @@ function loadGameDetail(title, gameUrl) {
     `;
 }
 
+function loadGameDetail(gameTitle, gameURL) {
+    const gamesGrid = document.getElementById("games-grid");
+    const gameDetail = document.getElementById("game-detail");
+    
+    // Hide the grid and show the detailed view
+    gamesGrid.style.display = "none";
+    gameDetail.style.display = "block";
+
+    // Populate the detailed view with the selected game
+    gameDetail.innerHTML = `
+        <h3>${gameTitle}</h3>
+        <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+        <button onclick="reloadGames()" style="margin-top: 20px;">Back to Games</button>
+    `;
+}
+
+function reloadGames() {
+    const gamesGrid = document.getElementById("games-grid");
+    const gameDetail = document.getElementById("game-detail");
+    
+    // Reset to the games grid view
+    gameDetail.style.display = "none";
+    gamesGrid.style.display = "grid"; // Ensure grid layout is restored
+}
 
