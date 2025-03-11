@@ -76,3 +76,27 @@ function loadGameDetail(title, details) {
     </div>
   `;
 }
+
+function handleBoxClick(gameTitle, gameDescription) {
+  // Clear the current page layout
+  document.body.innerHTML = `
+    <div class="container">
+      <!-- Left Section: Selected Game -->
+      <div class="main-game">
+        <h2>${gameTitle}</h2>
+        <div class="game-box">
+          <p>${gameDescription}</p>
+          <p>This is where your main game area (16:9 rectangle) would go.</p>
+        </div>
+      </div>
+
+      <!-- Right Section: Other Games -->
+      <div class="game-list">
+        <h3>Other Games</h3>
+        <div class="game-item" onclick="handleBoxClick('Game 1', 'This is Game 1')">Game 1</div>
+        <div class="game-item" onclick="handleBoxClick('Game 2', 'This is Game 2')">Game 2</div>
+        <div class="game-item" onclick="handleBoxClick('Game 3', 'This is Game 3')">Game 3</div>
+      </div>
+    </div>
+  `;
+}
