@@ -49,6 +49,7 @@ function goToGame(title, description) {
 }
 
 
+
 function loadGameDetail(title, details) {
   const container = document.getElementById("games-grid").parentElement;
 
