@@ -143,3 +143,25 @@ body {
 .game-item:hover {
   background-color: #e0f7fa;
 }
+
+#games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.game-card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Makes it obvious that it's clickable */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  background-color: #e0f7fa;
+}
