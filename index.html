@@ -38,6 +38,9 @@
                     <p>Description for Game 2.</p>
                 </div>
             </div>
+            <div id="game-detail" style="display: none;">
+                <!-- Detailed game view will be dynamically inserted here -->
+            </div>
         </section>
         
         <!-- Contact Section -->
@@ -55,7 +58,14 @@
     <script>
         function loadGameDetail(gameTitle, gameURL) {
             const gamesGrid = document.getElementById("games-grid");
-            gamesGrid.innerHTML = `
+            const gameDetail = document.getElementById("game-detail");
+            
+            // Hide the games grid and show the detailed view
+            gamesGrid.style.display = "none";
+            gameDetail.style.display = "block";
+
+            // Populate the detailed view with the selected game
+            gameDetail.innerHTML = `
                 <h3>${gameTitle}</h3>
                 <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
                 <button onclick="reloadGames()">Back to Games</button>
@@ -63,7 +73,12 @@
         }
 
         function reloadGames() {
-            location.reload(); // Reloads the page to show the games grid again
+            const gamesGrid = document.getElementById("games-grid");
+            const gameDetail = document.getElementById("game-detail");
+            
+            // Hide the detailed view and show the games grid again
+            gameDetail.style.display = "none";
+            gamesGrid.style.display = "flex"; // Assuming a flexbox layout for the grid
         }
     </script>
 </body>
