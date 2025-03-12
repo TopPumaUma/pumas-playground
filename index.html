@@ -57,7 +57,7 @@
         <section id="games">
             <h2>Games</h2>
             <div id="games-grid">
-                <!-- Game Cards -->
+                <!-- 9 Game Cards in a 3x3 Layout -->
                 <div class="game-card" onclick="loadGameDetail('Drive Mad', 'https://toppumauma.github.io/drive-mad')">
                     <h3>Drive Mad</h3>
                     <p>Drive a fun car through challenging levels!</p>
@@ -65,6 +65,34 @@
                 <div class="game-card" onclick="loadGameDetail('Game 2', 'game2.html')">
                     <h3>Game 2</h3>
                     <p>Description for Game 2.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 3', 'game3.html')">
+                    <h3>Game 3</h3>
+                    <p>Description for Game 3.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 4', 'game4.html')">
+                    <h3>Game 4</h3>
+                    <p>Description for Game 4.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 5', 'game5.html')">
+                    <h3>Game 5</h3>
+                    <p>Description for Game 5.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 6', 'game6.html')">
+                    <h3>Game 6</h3>
+                    <p>Description for Game 6.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 7', 'game7.html')">
+                    <h3>Game 7</h3>
+                    <p>Description for Game 7.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 8', 'game8.html')">
+                    <h3>Game 8</h3>
+                    <p>Description for Game 8.</p>
+                </div>
+                <div class="game-card" onclick="loadGameDetail('Game 9', 'game9.html')">
+                    <h3>Game 9</h3>
+                    <p>Description for Game 9.</p>
                 </div>
             </div>
             <div id="game-detail" style="display: none;">
@@ -105,7 +133,7 @@
             const gameDetail = document.getElementById("game-detail");
             
             gameDetail.style.display = "none";
-            gamesGrid.style.display = "flex";
+            gamesGrid.style.display = "grid"; // Restores grid layout
         }
 
         // Interactive Rainfall Effect
