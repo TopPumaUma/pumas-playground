@@ -8,9 +8,9 @@
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             background: black; /* Unified background */
             color: white;
+            overflow-y: auto; /* Enables vertical scrolling */
         }
 
         canvas {
@@ -29,6 +29,32 @@
         main {
             position: relative;
             z-index: 1;
+            padding: 20px; /* Added padding to prevent overflow issues */
+        }
+
+        #games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Creates a 3x3 grid */
+            gap: 20px; /* Space between cards */
+            padding: 20px;
+            justify-items: center; /* Centers the cards horizontally */
+        }
+
+        .game-card {
+            background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
+            border: 2px solid white; /* White border */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            color: white; /* White text for readability */
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+        }
+
+        .game-card:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+            transform: scale(1.05); /* Slight zoom effect */
         }
     </style>
 </head>
@@ -112,105 +138,6 @@
             </form>
         </section>
     </main>
-    <script>
-        // Load Game Detail
-        function loadGameDetail(gameTitle, gameURL) {
-            const gamesGrid = document.getElementById("games-grid");
-            const gameDetail = document.getElementById("game-detail");
-            
-            gamesGrid.style.display = "none";
-            gameDetail.style.display = "block";
-
-            gameDetail.innerHTML = `
-                <h3>${gameTitle}</h3>
-                <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
-                <button onclick="reloadGames()">Back to Games</button>
-            `;
-        }
-
-        function reloadGames() {
-            const gamesGrid = document.getElementById("games-grid");
-            const gameDetail = document.getElementById("game-detail");
-            
-            gameDetail.style.display = "none";
-            gamesGrid.style.display = "grid"; // Restores grid layout
-        }
-
-        // Interactive Rainfall Effect
-        const canvas = document.getElementById('rainCanvas');
-        const ctx = canvas.getContext('2d');
-
-        // Resize canvas
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const raindrops = [];
-        const mouse = { x: -100, y: -100 }; // Mouse starts off-screen
-
-        // Generate Raindrops
-        for (let i = 0; i < 150; i++) {
-            raindrops.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 2 + 1,
-                speed: Math.random() * 2 + 2,
-                colorStop: Math.random() // Controls the green-to-blue gradient
-            });
-        }
-
-        // Mouse Tracking
-        canvas.addEventListener('mousemove', (event) => {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            raindrops.forEach(drop => {
-                // Calculate color from position
-                const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255);
-                const blueComponent = Math.floor((drop.y / canvas.height) * 255);
-                const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`;
-
-                // Distance from mouse
-                const dx = drop.x - mouse.x;
-                const dy = drop.y - mouse.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                // Push effect
-                if (distance < 100) {
-                    const angle = Math.atan2(dy, dx);
-                    drop.x += Math.cos(angle) * 3;
-                    drop.y += Math.sin(angle) * 3;
-                }
-
-                // Move the drop
-                drop.y += drop.speed;
-                if (drop.y > canvas.height) {
-                    drop.y = 0;
-                    drop.x = Math.random() * canvas.width;
-                }
-
-                // Draw the drop
-                ctx.beginPath();
-                ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-                ctx.fillStyle = color; // Gradient color
-                ctx.fill();
-                ctx.closePath();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Handle resizing
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
 </body>
 </html>
 
