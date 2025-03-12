@@ -123,4 +123,44 @@ iframe {
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 5px;
-    cursor
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.game-item:hover {
+    background-color: #e0f7fa;
+}
+
+/* Main game box */
+.game-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Back to Games button */
+button {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
+    border: 2px solid white; /* White border */
+    border-radius: 10px; /* Rounded edges */
+    padding: 10px 20px;
+    color: white; /* White text for readability */
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase; /* Adds a bold look */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover animations */
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+    transform: scale(1.05); /* Grows slightly on hover */
+}
+
