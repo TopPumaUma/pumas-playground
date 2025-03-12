@@ -6,11 +6,12 @@
     <title>Puma's Playground</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* General styling */
         body {
             margin: 0;
-            background: black; /* Unified background */
+            background: black; /* Unified black background */
             color: white;
-            overflow-y: auto; /* Enables vertical scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         canvas {
@@ -29,17 +30,19 @@
         main {
             position: relative;
             z-index: 1;
-            padding: 20px; /* Added padding to prevent overflow issues */
+            padding: 20px;
         }
 
+        /* Games grid layout */
         #games-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Creates a 3x3 grid */
+            grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
             gap: 20px; /* Space between cards */
             padding: 20px;
             justify-items: center; /* Centers the cards horizontally */
         }
 
+        /* Game cards styling */
         .game-card {
             background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
             border: 2px solid white; /* White border */
@@ -48,13 +51,35 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
             color: white; /* White text for readability */
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+            cursor: pointer; /* Clickable cursor */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover animations */
         }
 
         .game-card:hover {
             background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
             transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        #game-detail {
+            display: none; /* Hidden by default */
+            position: fixed; /* Overlay the entire screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Full-screen height */
+            overflow-y: auto; /* Enables scrolling when content overflows */
+            background-color: rgba(0, 0, 0, 0.95); /* Dark background for focus */
+            color: white;
+            padding: 20px;
+            z-index: 10; /* Ensure it's above everything */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for effect */
+            border-radius: 10px; /* Optional: Rounded corners */
+        }
+
+        iframe {
+            width: 100%; /* Make the iframe fill the container horizontally */
+            height: 80vh; /* Occupy 80% of the viewport height */
+            border: none; /* Remove default borders */
         }
     </style>
 </head>
@@ -138,9 +163,69 @@
             </form>
         </section>
     </main>
-</body>
-</html>
+    <script>
+        // Load Game Detail
+        function loadGameDetail(gameTitle, gameURL) {
+            const gamesGrid = document.getElementById("games-grid");
+            const gameDetail = document.getElementById("game-detail");
+            
+            gamesGrid.style.display = "none";
+            gameDetail.style.display = "block";
 
+            gameDetail.innerHTML = `
+                <h3>${gameTitle}</h3>
+                <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+                <button onclick="reloadGames()">Back to Games</button>
+            `;
+        }
+
+        function reloadGames() {
+            const gamesGrid = document.getElementById("games-grid");
+            const gameDetail = document.getElementById("game-detail");
+            
+            gameDetail.style.display = "none";
+            gamesGrid.style.display = "grid"; // Restores grid layout
+        }
+
+        // Interactive Rainfall Effect
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const raindrops = [];
+        const mouse = { x: -100, y: -100 }; // Mouse starts off-screen
+
+        // Generate Raindrops
+        for (let i = 0; i < 150; i++) {
+            raindrops.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speed: Math.random() * 2 + 2,
+                colorStop: Math.random() // Controls the green-to-blue gradient
+            });
+        }
+
+        // Mouse Tracking
+        canvas.addEventListener('mousemove', (event) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            raindrops.forEach(drop => {
+                // Calculate color from position
+                const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255);
+                const blueComponent = Math.floor((drop.y / canvas.height) * 255);
+                const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`;
+
+                // Distance from mouse
+                const dx
 
 
 
