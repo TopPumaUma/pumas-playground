@@ -36,6 +36,7 @@ function loadGameDetail(title, gameUrl) {
     `;
 }
 
+// Function to load game details with proper scrolling and layout adjustments
 function loadGameDetail(gameTitle, gameURL) {
     const gamesGrid = document.getElementById("games-grid");
     const gameDetail = document.getElementById("game-detail");
@@ -46,12 +47,13 @@ function loadGameDetail(gameTitle, gameURL) {
 
     // Populate the detailed view with the selected game
     gameDetail.innerHTML = `
-        <h3>${gameTitle}</h3>
-        <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
-        <button onclick="reloadGames()" style="margin-top: 20px;">Back to Games</button>
+        <h3 style="text-align: center; margin-bottom: 20px;">${gameTitle}</h3>
+        <iframe src="${gameURL}" width="100%" height="80vh" frameborder="0" allowfullscreen></iframe>
+        <button onclick="reloadGames()" style="margin: 20px auto; display: block; padding: 10px 20px; border: none; background-color: #4CAF50; color: white; border-radius: 5px; cursor: pointer;">Back to Games</button>
     `;
 }
 
+// Function to reset view to the games grid
 function reloadGames() {
     const gamesGrid = document.getElementById("games-grid");
     const gameDetail = document.getElementById("game-detail");
@@ -60,4 +62,3 @@ function reloadGames() {
     gameDetail.style.display = "none";
     gamesGrid.style.display = "grid"; // Ensure grid layout is restored
 }
-
