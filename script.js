@@ -127,3 +127,4 @@ animate();
 // Handle resizing events
 window.addEventListener('resize', resizeCanvas);
 
+
