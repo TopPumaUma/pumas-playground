@@ -164,3 +164,22 @@ button:hover {
     transform: scale(1.05); /* Grows slightly on hover */
 }
 
+/* CSS for Exciting Title */
+.exciting-title {
+    font-size: 3em; /* Large and bold */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
+    text-transform: uppercase; /* All caps for impact */
+    color: white;
+    background: linear-gradient(45deg, #ff007c, #007cff); /* Gradient text */
+    -webkit-background-clip: text; /* Use the gradient as the text fill */
+    -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
+    animation: glowing 2s infinite; /* Adds a glow effect */
+    text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c;
+}
+
+/* Glowing animation */
+@keyframes glowing {
+    0% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
+    50% { text-shadow: 0 0 20px #007cff, 0 0 30px #ff007c, 0 0 40px #007cff; }
+    100% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
+}
