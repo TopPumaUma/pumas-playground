@@ -85,8 +85,7 @@ for (let i = 0; i < 150; i++) {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 2 + 1,
-        speed: Math.random() * 2 + 2,
-        colorStop: Math.random()
+        speed: Math.random() * 2 + 2
     });
 }
 
