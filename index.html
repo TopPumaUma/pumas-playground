@@ -15,9 +15,11 @@
         }
 
         canvas {
-            position: absolute;
+            position: fixed; /* Fixed so it doesn't scroll with the page */
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%; /* Full viewport height */
             z-index: -1; /* Ensure it's behind all content */
         }
 
@@ -31,6 +33,28 @@
             position: relative;
             z-index: 1;
             padding: 20px;
+        }
+
+        /* Title Styling */
+        .exciting-title {
+            font-size: 3em; /* Large and bold */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
+            text-transform: uppercase; /* All caps for impact */
+            color: white;
+            background: linear-gradient(45deg, #ff007c, #007cff); /* Gradient text */
+            -webkit-background-clip: text; /* Use the gradient as the text fill */
+            -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
+            animation: glowing 2s infinite; /* Adds a glow effect */
+            text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Glowing animation */
+        @keyframes glowing {
+            0% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
+            50% { text-shadow: 0 0 20px #007cff, 0 0 30px #ff007c, 0 0 40px #007cff; }
+            100% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
         }
 
         /* Games grid layout */
@@ -66,7 +90,8 @@
     <canvas id="rainCanvas"></canvas>
 
     <header>
-        <h1>Welcome to Puma's Playground</h1>
+        <!-- Updated Title -->
+        <h1 class="exciting-title">Welcome to Puma's Playground</h1>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -91,13 +116,13 @@
                     <h3>Drive Mad</h3>
                     <p>Drive a fun car through challenging levels!</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('A Small World Cup', 'https://toppumauma.github.io/Game2')">
-                    <h3>A Small World Cup</h3>
-                    <p>A cute pixel game about flinging ragdolls.</p>
+                <div class="game-card" onclick="loadGameDetail('Game 2', 'game2.html')">
+                    <h3>Game 2</h3>
+                    <p>Description for Game 2.</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('Modded OvO', 'https://toppumauma.github.io/ovo/')">
-                    <h3>Modded OvO</h3>
-                    <p>Choose from several different Versions of OvO!.</p>
+                <div class="game-card" onclick="loadGameDetail('Game 3', 'game3.html')">
+                    <h3>Game 3</h3>
+                    <p>Description for Game 3.</p>
                 </div>
                 <div class="game-card" onclick="loadGameDetail('Game 4', 'game4.html')">
                     <h3>Game 4</h3>
@@ -142,85 +167,46 @@
         </section>
     </main>
     <script>
-        // Load Game Detail
-        function loadGameDetail(gameTitle, gameURL) {
-            const gamesGrid = document.getElementById("games-grid");
-            const gameDetail = document.getElementById("game-detail");
-            
-            gamesGrid.style.display = "none";
-            gameDetail.style.display = "block";
-
-            gameDetail.innerHTML = `
-                <h3>${gameTitle}</h3>
-                <iframe src="${gameURL}" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
-                <button onclick="reloadGames()">Back to Games</button>
-            `;
-        }
-        
-
-        function reloadGames() {
-            const gamesGrid = document.getElementById("games-grid");
-            const gameDetail = document.getElementById("game-detail");
-            
-            gameDetail.style.display = "none";
-            gamesGrid.style.display = "grid"; // Restores grid layout
-        }
-
         // Interactive Rainfall Effect
         const canvas = document.getElementById('rainCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Resize canvas
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Resize canvas dynamically to the viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
 
         const raindrops = [];
-
-        // Generate Raindrops
         for (let i = 0; i < 150; i++) {
             raindrops.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 radius: Math.random() * 2 + 1,
-                speed: Math.random() * 2 + 2,
-                colorStop: Math.random()
+                speed: Math.random() * 2 + 2
             });
         }
 
         function animate() {
+            resizeCanvas();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             raindrops.forEach(drop => {
-                // Calculate color from position
-                const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255);
-                const blueComponent = Math.floor((drop.y / canvas.height) * 255);
-                const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`;
-
-                // Move the drop
-                drop.y += drop.speed;
-                if (drop.y > canvas.height) {
-                    drop.y = 0;
-                    drop.x = Math.random() * canvas.width;
-                }
-
-                // Draw the drop
                 ctx.beginPath();
                 ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-                ctx.fillStyle = color;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
                 ctx.fill();
-                ctx.closePath();
+
+                drop.y += drop.speed;
+                if (drop.y > canvas.height) drop.y = 0;
             });
 
             requestAnimationFrame(animate);
         }
-
         animate();
 
-        // Handle resizing
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
+        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
