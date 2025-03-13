@@ -89,6 +89,37 @@ for (let i = 0; i < 150; i++) {
     });
 }
 
-// Animation logic
+// Animation logic for the raindrops
 function animate() {
-    ctx.clear
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    raindrops.forEach(drop => {
+        // Calculate gradient color
+        const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255); // More green at the top
+        const blueComponent = Math.floor((drop.y / canvas.height) * 255);       // More blue at the bottom
+        const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`; // Gradient color
+
+        // Move the drop
+        drop.y += drop.speed;
+        if (drop.y > canvas.height) {
+            drop.y = 0; // Reset raindrop to the top
+            drop.x = Math.random() * canvas.width;
+        }
+
+        // Draw the drop
+        ctx.beginPath();
+        ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+        ctx.fillStyle = color; // Apply dynamic gradient color
+        ctx.fill();
+        ctx.closePath();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+// Start the animation
+animate();
+
+// Handle resizing events
+window.addEventListener('resize', resizeCanvas);
+
