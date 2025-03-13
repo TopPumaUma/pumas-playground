@@ -6,7 +6,7 @@
     <title>Puma's Playground</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* General Styling */
+        /* General styling */
         body {
             margin: 0;
             background: black; /* Unified black background */
@@ -41,23 +41,23 @@
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
             text-transform: uppercase; /* All caps for impact */
             color: white;
-            background: linear-gradient(45deg, #00ff88, #007cff); /* Green-to-blue gradient */
+            background: linear-gradient(45deg, #ff007c, #007cff); /* Gradient text */
             -webkit-background-clip: text; /* Use the gradient as the text fill */
             -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
-            animation: gradientShift 4s infinite; /* Smooth gradient animation */
-            text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow effect */
+            animation: glowing 2s infinite; /* Adds a glow effect */
+            text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c;
             text-align: center;
             margin-top: 20px;
         }
 
-        /* Subtle Gradient Animation */
-        @keyframes gradientShift {
-            0% { background: linear-gradient(45deg, #00ff88, #007cff); }
-            50% { background: linear-gradient(45deg, #007cff, #00ff88); }
-            100% { background: linear-gradient(45deg, #00ff88, #007cff); }
+        /* Glowing animation */
+        @keyframes glowing {
+            0% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
+            50% { text-shadow: 0 0 20px #007cff, 0 0 30px #ff007c, 0 0 40px #007cff; }
+            100% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
         }
 
-        /* Games Grid Layout */
+        /* Games grid layout */
         #games-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
@@ -66,7 +66,7 @@
             justify-items: center; /* Centers the cards horizontally */
         }
 
-        /* Game Cards Styling */
+        /* Game cards styling */
         .game-card {
             background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
             border: 2px solid white; /* White border */
@@ -106,23 +106,23 @@
             <h2>Home</h2>
             <p>Discover the best arcade games and have fun!</p>
         </section>
-
+        
         <!-- Games Section -->
         <section id="games">
             <h2>Games</h2>
             <div id="games-grid">
-                <!-- Game Cards in a 3x3 Layout -->
+                <!-- 9 Game Cards in a 3x3 Layout -->
                 <div class="game-card" onclick="loadGameDetail('Drive Mad', 'https://toppumauma.github.io/drive-mad')">
                     <h3>Drive Mad</h3>
                     <p>Drive a fun car through challenging levels!</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('A Small World Cup', 'https://toppumauma.github.io/Game2')">
-                    <h3>A Small World Cup</h3>
-                    <p>Fling pixelated soccer players and try to win!</p>
+                <div class="game-card" onclick="loadGameDetail('Game 2', 'game2.html')">
+                    <h3>Game 2</h3>
+                    <p>Description for Game 2.</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('OvO Modded', 'https://toppumauma.github.io/ovo/')">
-                    <h3>OvO Modded</h3>
-                    <p>Play several different versions of OvO!</p>
+                <div class="game-card" onclick="loadGameDetail('Game 3', 'game3.html')">
+                    <h3>Game 3</h3>
+                    <p>Description for Game 3.</p>
                 </div>
                 <div class="game-card" onclick="loadGameDetail('Game 4', 'game4.html')">
                     <h3>Game 4</h3>
@@ -153,7 +153,7 @@
                 <!-- Detailed game view will be dynamically inserted here -->
             </div>
         </section>
-
+        
         <!-- Contact Section -->
         <section id="contact">
             <h2>Contact</h2>
@@ -166,6 +166,48 @@
             </form>
         </section>
     </main>
+    <script>
+        // Interactive Rainfall Effect
+        const canvas = document.getElementById('rainCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas dynamically to the viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+
+        const raindrops = [];
+        for (let i = 0; i < 150; i++) {
+            raindrops.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speed: Math.random() * 2 + 2
+            });
+        }
+
+        function animate() {
+            resizeCanvas();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            raindrops.forEach(drop => {
+                ctx.beginPath();
+                ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fill();
+
+                drop.y += drop.speed;
+                if (drop.y > canvas.height) drop.y = 0;
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', resizeCanvas);
+    </script>
 </body>
 </html>
 
