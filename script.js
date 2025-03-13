@@ -91,39 +91,4 @@ for (let i = 0; i < 150; i++) {
 
 // Animation logic
 function animate() {
-    // Ensure canvas always matches the visible viewport size
-    resizeCanvas();
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    raindrops.forEach(drop => {
-        // Calculate color from position
-        const greenComponent = Math.floor(255 - (drop.y / canvas.height) * 255);
-        const blueComponent = Math.floor((drop.y / canvas.height) * 255);
-        const color = `rgba(0, ${greenComponent}, ${blueComponent}, 0.8)`;
-
-        // Move the drop
-        drop.y += drop.speed;
-        if (drop.y > canvas.height) {
-            drop.y = 0; // Reset raindrop to the top
-            drop.x = Math.random() * canvas.width;
-        }
-
-        // Draw the drop
-        ctx.beginPath();
-        ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.closePath();
-    });
-
-    requestAnimationFrame(animate);
-}
-
-// Start the animation
-animate();
-
-// Handle resizing events
-window.addEventListener('resize', resizeCanvas);
-
-
+    ctx.clear
