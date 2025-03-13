@@ -4,15 +4,15 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light background for contrast */
+    overflow-y: auto; /* Enables vertical scrolling */
 }
 
 /* Header styling */
 header {
-    background-color: #4CAF50;
+    background: linear-gradient(45deg, #00ff88, #0055ff); /* Green-to-blue gradient */
     color: white;
     padding: 1em;
-    background: linear-gradient(45deg, #00ff88, #0055ff); /* Gradient update */
 }
 
 nav ul {
@@ -47,50 +47,51 @@ section {
 /* Games grid layout */
 #games-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Updated to ensure 3 columns for a 3x3 layout */
     gap: 20px;
     padding: 20px;
+    justify-items: center;
 }
 
 /* Game cards styling */
 .game-card {
     background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
-    border: 2px solid white; /* White border */
+    border: 2px solid white;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    color: white; /* White text for readability */
+    color: white;
     cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth animations */
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .game-card:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);
 }
 
 /* Game detail view */
 #game-detail {
     display: none; /* Hidden by default */
-    position: fixed; /* Overlay the entire screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; /* Full-screen height */
-    overflow-y: auto; /* Enables scrolling when content overflows */
-    background-color: rgba(0, 0, 0, 0.95); /* Dark background for focus */
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.95); /* Dark background */
     color: white;
     padding: 20px;
-    z-index: 10; /* Ensures it appears above everything */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for effect */
-    border-radius: 10px; /* Optional: Rounded corners */
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
 }
 
 iframe {
-    width: 100%; /* Make the iframe fill the container horizontally */
-    height: 80vh; /* Occupy 80% of the viewport height */
-    border: none; /* Remove default borders */
+    width: 100%;
+    height: 80vh; /* Occupy 80% of viewport height */
+    border: none;
 }
 
 /* Game item list view */
@@ -129,7 +130,7 @@ iframe {
 }
 
 .game-item:hover {
-    background-color: #e0f7fa;
+    background-color: #e0f7fa; /* Subtle hover effect */
 }
 
 /* Main game box */
@@ -147,40 +148,41 @@ iframe {
 
 /* Back to Games button */
 button {
-    background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
-    border: 2px solid white; /* White border */
-    border-radius: 10px; /* Rounded edges */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    border-radius: 10px;
     padding: 10px 20px;
-    color: white; /* White text for readability */
+    color: white;
     font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase; /* Adds a bold look */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover animations */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
-    transform: scale(1.05); /* Grows slightly on hover */
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 /* CSS for Exciting Title */
 .exciting-title {
-    font-size: 3em; /* Large and bold */
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
-    text-transform: uppercase; /* All caps for impact */
+    font-size: 3em;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-transform: uppercase;
     color: white;
     background: linear-gradient(45deg, #00ff88, #007cff); /* Green-to-blue gradient */
-    -webkit-background-clip: text; /* Use the gradient as the text fill */
-    -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
-    animation: gradientChange 2s infinite; /* Adds a gradient animation */
-    text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s infinite; /* Gradient animation for subtle effect */
+    text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow effect */
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* Subtle animation for the gradient */
-@keyframes gradientChange {
+@keyframes gradientShift {
     0% { background: linear-gradient(45deg, #00ff88, #007cff); }
     50% { background: linear-gradient(45deg, #007cff, #00ff88); }
     100% { background: linear-gradient(45deg, #00ff88, #007cff); }
 }
-
