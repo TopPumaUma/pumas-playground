@@ -170,16 +170,17 @@ button:hover {
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
     text-transform: uppercase; /* All caps for impact */
     color: white;
-    background: linear-gradient(45deg, #ff007c, #007cff); /* Gradient text */
+    background: linear-gradient(45deg, #00ff88, #007cff); /* Green-to-blue gradient */
     -webkit-background-clip: text; /* Use the gradient as the text fill */
     -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
-    animation: glowing 2s infinite; /* Adds a glow effect */
-    text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c;
+    animation: gradientChange 2s infinite; /* Adds a gradient animation */
+    text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow */
 }
 
-/* Glowing animation */
-@keyframes glowing {
-    0% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
-    50% { text-shadow: 0 0 20px #007cff, 0 0 30px #ff007c, 0 0 40px #007cff; }
-    100% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
+/* Subtle animation for the gradient */
+@keyframes gradientChange {
+    0% { background: linear-gradient(45deg, #00ff88, #007cff); }
+    50% { background: linear-gradient(45deg, #007cff, #00ff88); }
+    100% { background: linear-gradient(45deg, #00ff88, #007cff); }
 }
+
