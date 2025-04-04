@@ -6,91 +6,49 @@
     <title>Puma's Playground</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* General styling */
+        /* General styling for the site */
         body {
             margin: 0;
-            background: black; /* Unified black background */
+            background-color: black; /* Unified background color */
             color: white;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto;
         }
-
         canvas {
-            position: fixed; /* Fixed so it doesn't scroll with the page */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* Full viewport height */
-            z-index: -1; /* Ensure it's behind all content */
+            height: 100%;
+            z-index: -1;
         }
-
         header {
             position: relative;
             z-index: 1;
-            background: transparent; /* Seamless integration */
+            background: transparent;
         }
-
         main {
             position: relative;
             z-index: 1;
             padding: 20px;
         }
-
-        /* Title Styling */
-        .exciting-title {
-            font-size: 3em; /* Large and bold */
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful and fun */
-            text-transform: uppercase; /* All caps for impact */
-            color: white;
-            background: linear-gradient(45deg, #ff007c, #007cff); /* Gradient text */
-            -webkit-background-clip: text; /* Use the gradient as the text fill */
-            -webkit-text-fill-color: transparent; /* Transparent background for the gradient */
-            animation: glowing 2s infinite; /* Adds a glow effect */
-            text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Glowing animation */
-        @keyframes glowing {
-            0% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
-            50% { text-shadow: 0 0 20px #007cff, 0 0 30px #ff007c, 0 0 40px #007cff; }
-            100% { text-shadow: 0 0 10px #ff007c, 0 0 20px #007cff, 0 0 30px #ff007c; }
-        }
-
-        /* Games grid layout */
         #games-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Creates 3 columns */
-            gap: 20px; /* Space between cards */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             padding: 20px;
-            justify-items: center; /* Centers the cards horizontally */
+            justify-items: center;
         }
-
-        /* Game cards styling */
-        .game-card {
-            background-color: rgba(255, 255, 255, 0.1); /* Transparent with white tint */
-            border: 2px solid white; /* White border */
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-            color: white; /* White text for readability */
-            cursor: pointer; /* Clickable cursor */
-            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover animations */
-        }
-
-        .game-card:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
-            transform: scale(1.05); /* Slight zoom effect */
+        #game-detail {
+            display: none; /* Hidden initially */
         }
     </style>
 </head>
 <body>
-    <!-- Background Canvas -->
+    <!-- Canvas for Rainfall Effect -->
     <canvas id="rainCanvas"></canvas>
 
     <header>
-        <!-- Updated Title -->
+        <!-- Site Title and Navigation -->
         <h1 class="exciting-title">Welcome to Puma's Playground</h1>
         <nav>
             <ul>
@@ -100,6 +58,7 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <!-- Home Section -->
         <section id="home">
@@ -111,22 +70,23 @@
         <section id="games">
             <h2>Games</h2>
             <div id="games-grid">
-                <!-- 9 Game Cards in a 3x3 Layout -->
+                <!-- Game Cards -->
                 <div class="game-card" onclick="loadGameDetail('Drive Mad', 'https://toppumauma.github.io/drive-mad')">
                     <h3>Drive Mad</h3>
                     <p>Drive a fun car through challenging levels!</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('a Small World Cup', 'https://toppumauma.github.io/Game2')">
+                <div class="game-card" onclick="loadGameDetail('A Small World Cup', 'https://toppumauma.github.io/Game2')">
                     <h3>A Small World Cup</h3>
                     <p>Pixelated Soccer Players.</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('modded ovo', 'https://toppumauma.github.io/ovo/')">
+                <div class="game-card" onclick="loadGameDetail('Modded OvO', 'https://toppumauma.github.io/ovo/')">
                     <h3>Modded OvO</h3>
-                    <p>Play different versiosn of ovo.</p>
+                    <p>Play different versions of OvO.</p>
                 </div>
+                <!-- Additional Game Cards -->
                 <div class="game-card" onclick="loadGameDetail('Unicycle Hero', 'https://toppumauma.github.io/unicycle-hero/')">
                     <h3>Unicycle Hero</h3>
-                    <p>Play as a little pixel athlete and rack up high scores.</p>
+                    <p>Play as a pixel athlete and rack up high scores.</p>
                 </div>
                 <div class="game-card" onclick="loadGameDetail('Game 5', 'game5.html')">
                     <h3>Game 5</h3>
@@ -136,21 +96,10 @@
                     <h3>Game 6</h3>
                     <p>Description for Game 6.</p>
                 </div>
-                <div class="game-card" onclick="loadGameDetail('Game 7', 'game7.html')">
-                    <h3>Game 7</h3>
-                    <p>Description for Game 7.</p>
-                </div>
-                <div class="game-card" onclick="loadGameDetail('Game 8', 'game8.html')">
-                    <h3>Game 8</h3>
-                    <p>Description for Game 8.</p>
-                </div>
-                <div class="game-card" onclick="loadGameDetail('Game 9', 'game9.html')">
-                    <h3>Game 9</h3>
-                    <p>Description for Game 9.</p>
-                </div>
             </div>
-            <div id="game-detail" style="display: none;">
-                <!-- Detailed game view will be dynamically inserted here -->
+            <div id="game-detail">
+                <!-- Detailed Game View -->
+                <!-- Dynamically updated by JavaScript -->
             </div>
         </section>
         
@@ -166,51 +115,10 @@
             </form>
         </section>
     </main>
-    <script>
-        // Interactive Rainfall Effect
-        const canvas = document.getElementById('rainCanvas');
-        const ctx = canvas.getContext('2d');
 
-        // Resize canvas dynamically to the viewport
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-
-        const raindrops = [];
-        for (let i = 0; i < 150; i++) {
-            raindrops.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 2 + 1,
-                speed: Math.random() * 2 + 2
-            });
-        }
-
-        function animate() {
-            resizeCanvas();
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            raindrops.forEach(drop => {
-                ctx.beginPath();
-                ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.fill();
-
-                drop.y += drop.speed;
-                if (drop.y > canvas.height) drop.y = 0;
-            });
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        window.addEventListener('resize', resizeCanvas);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
 
 
 
