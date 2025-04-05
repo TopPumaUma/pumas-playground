@@ -15,16 +15,19 @@ header {
     background: transparent; /* Transparent background */
 }
 
-header h1 {
-    color: transparent; /* Makes the text color transparent */
-    background: linear-gradient(45deg, #00ff88, #0055ff); /* Green-to-blue gradient */
-    -webkit-background-clip: text; /* Clips the background to the text */
-    background-clip: text; /* For non-WebKit browsers */
+/* Styling the exciting title */
+.exciting-title {
     font-size: 3em;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-transform: uppercase;
+    color: transparent; /* Makes the text transparent */
+    background: linear-gradient(45deg, #00ff88, #0055ff); /* Green-to-blue gradient */
+    -webkit-background-clip: text; /* Clips the background to the text */
+    background-clip: text; /* For non-WebKit browsers */
+    -webkit-text-fill-color: transparent; /* Makes the text transparent to show the gradient */
     animation: gradientShift 4s infinite; /* Gradient animation for subtle effect */
     text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow effect */
+    text-align: center;
     margin-top: 20px;
 }
 
@@ -185,26 +188,3 @@ button:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
-
-/* CSS for Exciting Title */
-.exciting-title {
-    font-size: 3em;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    text-transform: uppercase;
-    color: transparent; /* Makes the text color transparent */
-    background: linear-gradient(45deg, #00ff88, #0055ff); /* Green-to-blue gradient */
-    -webkit-background-clip: text; /* Clipping the gradient to the text */
-    -webkit-text-fill-color: transparent; /* Makes the text transparent to show the gradient */
-    animation: gradientShift 4s infinite; /* Gradient animation for subtle effect */
-    text-shadow: 0 0 5px #00ff88, 0 0 10px #007cff; /* Softer glow effect */
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Subtle animation for the gradient */
-@keyframes gradientShift {
-    0% { background: linear-gradient(45deg, #00ff88, #007cff); }
-    50% { background: linear-gradient(45deg, #007cff, #00ff88); }
-    100% { background: linear-gradient(45deg, #00ff88, #007cff); }
-}
-
